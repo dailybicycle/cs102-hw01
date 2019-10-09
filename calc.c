@@ -1,52 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define M main
-#define f(x,y) double f##x(a,b)double a,b;{return a y b;}
-#define g " operator"
-#define h " arg"
-#define i "no"
-#define j "u"
-#define k "!\n"
-#define l "men"
-#define m "%s"
-#define n "%c"
-#define o " "
 
-/*
-Heavily obfuscated implementation of HW1.
-Compile it and us it to test the input/output, 
-but I do NOT suggest trying to understand or emulate
-the code below.
-*/
+int main(int argc, char* argv[]) {
+					//This format makes argc the # of char elements in the array argv.
+	float operand1 = atof(argv[2]); //atof converts the second char in argv to a float
+	float operand2 = atof(argv[3]); //Same for the third char in argv
+	char operator = argv[1][0]; //Redefines the first element as the operator
+	float result = 0; //Initializes output result as 0, just in case.
 
-typedef double d;
-typedef char c;
-c*um=j m n n n":"n m g"[+-*/]"h"1"h"2"m;
-c*am=i n n n i j m"h"h j l n m k;
-c*km=j m"k"i"w"m g n"'"n"'"k;
-double (*z[0x100])();
-u(c *a)
-{
-    fprintf(stderr, um, m+1, h[1], h[3], l[1], *g, a, k+1);
-    exit(1);
+
+	if (argc < 3){
+	printf("Not enough arguments.\n");}
+		else if (operator == '/' && operand2 == 0){
+			printf("Undefined operation: zero denominator.\n");
+	return(-1); /*This is an exit code to indicate one of two problems with program usage,
+					incorrect denominator or missing arguments.*/
+	}
+	
+	switch(operator) /*This checks the value of the operator char entered against the four
+						possible cases.*/
+	{
+
+		case '+': result = (operand1 + operand2);
+			printf("%g\n", result); /*%g is used to make the output have a specific # sig.
+										figs. When no specification is given, the default 
+										is 6, as in the calc_test.txt output file.*/
+			break;
+		case '-': result = (operand1 - operand2);
+			printf("%g\n", result);
+			break;
+		case 'x': result = (operand1 * operand2);
+			printf("%g\n", result);
+			break;
+		case '/': result = (operand1 / operand2);
+			printf("%g\n", result);
+			break;
+		
+		default: printf("Operator invalid.\n"); /*This will indicate if an invalid operator
+													has been used.*/
+	}
+		
+return 0;
 }
-f(a,+) f(b,-) f(c,*) f(d,/) M(a, b) c **b;
-{
-    z['+'] = fa;
-    z['-'] = fb;
-    z['x'] = fc;
-    z['/'] = fd;
-    if (a < 4) {
-        fprintf(stderr, am, g[6], *g, l[1], h+3, g[6], m+1);
-        u(*b);
-    }
-    c f  = **++b;
-    d d1 = atof(*++b);
-    d d2 = atof(*++b);
-    if (0x29 == (f & ~06) && f & 6 || f == 0170) {
-        printf("%g\n", z[f](d1, d2));
-        return 0;
-    }
-    fprintf(stderr, km, l+2, l+2, *g, *b[-2]);
-    u(b[-3]);
-}
+	
