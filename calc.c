@@ -14,17 +14,17 @@ int main(int argc, char* argv[]) {
 		else if (operator == '/' && operand2 == 0){
 			printf("Undefined operation: zero denominator.\n");
 	return(-1); /*This is an exit code to indicate one of two problems with program usage,
-					incorrect denominator or missing arguments.*/
+			incorrect denominator or missing arguments.*/
 	}
 	
 	switch(operator) /*This checks the value of the operator char entered against the four
-						possible cases.*/
+				possible cases.*/
 	{
 
 		case '+': result = (operand1 + operand2);
 			printf("%g\n", result); /*%g is used to make the output have a specific # sig.
-										figs. When no specification is given, the default 
-										is 6, as in the calc_test.txt output file.*/
+						figs. When no specification is given, the default 
+						is 6, as in the calc_test.txt output file.*/
 			break;
 		case '-': result = (operand1 - operand2);
 			printf("%g\n", result);
@@ -36,8 +36,7 @@ int main(int argc, char* argv[]) {
 			printf("%g\n", result);
 			break;
 		
-		default: printf("Operator invalid.\n"); /*This will indicate if an invalid operator
-													has been used.*/
+		default: printf("Operator invalid.\n"); //This will indicate if an invalid operator has been used.
 	}
 		
 return 0;
